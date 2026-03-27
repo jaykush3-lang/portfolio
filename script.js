@@ -6,8 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const revealItems = document.querySelectorAll(".reveal");
   const navLinks = document.querySelectorAll(".nav a");
   const sections = ["about", "skills", "projects", "contact"];
-  const cursorGlow = document.querySelector(".cursor-glow");
-  const cursorDot = document.querySelector(".cursor-dot");
+  const cursorRing = document.querySelector(".cursor-ring");
+  const cursorCore = document.querySelector(".cursor-core");
+  const cursorAura = document.querySelector(".cursor-aura");
   const magneticItems = document.querySelectorAll(".magnetic");
   const hoverPanels = document.querySelectorAll(
     ".floating-card, .content-panel, .skill-feature, .skill-card, .project-card, .value-banner, .contact-panel"
@@ -81,35 +82,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (supportsFinePointer) {
     body.classList.add("cursor-enabled");
-    let cursorX = window.innerWidth / 2;
-    let cursorY = window.innerHeight / 2;
-    let glowX = cursorX;
-    let glowY = cursorY;
+    let pointerX = window.innerWidth / 2;
+    let pointerY = window.innerHeight / 2;
+    let ringX = pointerX;
+    let ringY = pointerY;
+    let auraX = pointerX;
+    let auraY = pointerY;
 
-    const renderCursor = () => {
-      glowX += (cursorX - glowX) * 0.16;
-      glowY += (cursorY - glowY) * 0.16;
+    const animateCursor = () => {
+      ringX += (pointerX - ringX) * 0.18;
+      ringY += (pointerY - ringY) * 0.18;
+      auraX += (pointerX - auraX) * 0.08;
+      auraY += (pointerY - auraY) * 0.08;
 
-      root.style.setProperty("--cursor-x", `${glowX}px`);
-      root.style.setProperty("--cursor-y", `${glowY}px`);
+      root.style.setProperty("--cursor-x", `${auraX}px`);
+      root.style.setProperty("--cursor-y", `${auraY}px`);
 
-      if (cursorGlow) {
-        cursorGlow.style.transform = `translate(${glowX}px, ${glowY}px)`;
+      if (cursorRing) {
+        cursorRing.style.transform = `translate(${ringX}px, ${ringY}px)`;
       }
 
-      if (cursorDot) {
-        cursorDot.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+      if (cursorCore) {
+        cursorCore.style.transform = `translate(${pointerX}px, ${pointerY}px)`;
       }
 
-      window.requestAnimationFrame(renderCursor);
+      if (cursorAura) {
+        cursorAura.style.transform = `translate(${auraX}px, ${auraY}px)`;
+      }
+
+      window.requestAnimationFrame(animateCursor);
     };
 
     window.addEventListener("mousemove", (event) => {
-      cursorX = event.clientX;
-      cursorY = event.clientY;
+      pointerX = event.clientX;
+      pointerY = event.clientY;
     });
 
-    window.requestAnimationFrame(renderCursor);
+    window.requestAnimationFrame(animateCursor);
   }
 
   hoverPanels.forEach((panel) => {
@@ -131,9 +140,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const rect = item.getBoundingClientRect();
       const offsetX = event.clientX - rect.left - rect.width / 2;
       const offsetY = event.clientY - rect.top - rect.height / 2;
-      const moveX = offsetX / 18;
-      const moveY = offsetY / 18;
-
+      const moveX = offsetX / 22;
+      const moveY = offsetY / 22;
       item.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
     });
 
