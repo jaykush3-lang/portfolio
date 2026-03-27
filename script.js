@@ -1,10 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.documentElement;
+  const body = document.body;
   const themeButton = document.getElementById("toggle-theme");
   const year = document.getElementById("year");
   const revealItems = document.querySelectorAll(".reveal");
   const navLinks = document.querySelectorAll(".nav a");
   const sections = ["about", "skills", "projects", "contact"];
+  const cursorGlow = document.querySelector(".cursor-glow");
+  const cursorDot = document.querySelector(".cursor-dot");
+  const magneticItems = document.querySelectorAll(".magnetic");
+  const hoverPanels = document.querySelectorAll(
+    ".floating-card, .content-panel, .skill-feature, .skill-card, .project-card, .value-banner, .contact-panel"
+  );
 
   if (year) {
     year.textContent = new Date().getFullYear();
@@ -17,9 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const storedTheme = localStorage.getItem("portfolio-theme");
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const startDark = storedTheme ? storedTheme === "dark" : false;
-
+  const startDark = storedTheme === "dark";
   root.classList.toggle("theme-dark", startDark);
   setThemeText(startDark);
 
@@ -70,5 +75,70 @@ document.addEventListener("DOMContentLoaded", () => {
     if (section) {
       sectionObserver.observe(section);
     }
+  });
+
+  const supportsFinePointer = window.matchMedia("(pointer: fine)").matches;
+
+  if (supportsFinePointer) {
+    body.classList.add("cursor-enabled");
+    let cursorX = window.innerWidth / 2;
+    let cursorY = window.innerHeight / 2;
+    let glowX = cursorX;
+    let glowY = cursorY;
+
+    const renderCursor = () => {
+      glowX += (cursorX - glowX) * 0.16;
+      glowY += (cursorY - glowY) * 0.16;
+
+      root.style.setProperty("--cursor-x", `${glowX}px`);
+      root.style.setProperty("--cursor-y", `${glowY}px`);
+
+      if (cursorGlow) {
+        cursorGlow.style.transform = `translate(${glowX}px, ${glowY}px)`;
+      }
+
+      if (cursorDot) {
+        cursorDot.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+      }
+
+      window.requestAnimationFrame(renderCursor);
+    };
+
+    window.addEventListener("mousemove", (event) => {
+      cursorX = event.clientX;
+      cursorY = event.clientY;
+    });
+
+    window.requestAnimationFrame(renderCursor);
+  }
+
+  hoverPanels.forEach((panel) => {
+    panel.addEventListener("mousemove", (event) => {
+      const rect = panel.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width) * 100;
+      const y = ((event.clientY - rect.top) / rect.height) * 100;
+      panel.style.setProperty("--mx", `${x}%`);
+      panel.style.setProperty("--my", `${y}%`);
+    });
+  });
+
+  magneticItems.forEach((item) => {
+    item.addEventListener("mousemove", (event) => {
+      if (!supportsFinePointer) {
+        return;
+      }
+
+      const rect = item.getBoundingClientRect();
+      const offsetX = event.clientX - rect.left - rect.width / 2;
+      const offsetY = event.clientY - rect.top - rect.height / 2;
+      const moveX = offsetX / 18;
+      const moveY = offsetY / 18;
+
+      item.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
+    });
+
+    item.addEventListener("mouseleave", () => {
+      item.style.transform = "";
+    });
   });
 });

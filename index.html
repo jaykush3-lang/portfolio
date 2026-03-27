@@ -5,251 +5,281 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta
     name="description"
-    content="Arpit Kushwaha portfolio website showcasing data analysis skills, Python, SQL, and problem solving."
+    content="Arpit Kushwaha portfolio website showcasing computer science fundamentals, data-oriented interests, Python, SQL, and problem solving."
   />
   <title>Arpit Kushwaha | Computer Science Student</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@500;700;800&display=swap"
     rel="stylesheet"
   />
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#home">Arpit Kushwaha</a>
-      <nav class="nav" aria-label="Primary navigation">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <button id="toggle-theme" class="theme-toggle" type="button" aria-label="Toggle theme">
-        Dark
-      </button>
-    </div>
-  </header>
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
 
-  <main>
-    <section id="home" class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy reveal">
-          <p class="eyebrow">Portfolio</p>
-          <h1>Building strong technical foundations for data, logic, and real-world problem solving.</h1>
-          <p class="hero-text">
-            I am <strong>Arpit Kushwaha</strong>, a Computer Science student with a strong interest
-            in Python, SQL, and problem solving. I enjoy exploring data, understanding patterns,
-            and building a solid analytical foundation through consistent learning and hands-on
-            practice.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#projects">View Projects</a>
-            <a class="btn btn-secondary" href="https://www.linkedin.com/in/arpit-kushwaha-324479388" target="_blank" rel="noopener">LinkedIn</a>
-          </div>
-          <div class="hero-tags">
-            <span>Python</span>
-            <span>SQL</span>
-            <span>Pandas</span>
-            <span>NumPy</span>
-            <span>Problem Solving</span>
-          </div>
-        </div>
-
-        <aside class="hero-card reveal">
-          <p class="card-label">Current Focus</p>
-          <h2>Computer Science Student</h2>
-          <p>
-            Strengthening my skills in programming, structured thinking, data analysis concepts,
-            and practical problem solving step by step.
-          </p>
-          <ul class="hero-stats">
-            <li>
-              <strong>CS Student</strong>
-              <span>Learning through academics and practice</span>
-            </li>
-            <li>
-              <strong>Analytical Base</strong>
-              <span>DBMS, Probability, Statistics, Linear Algebra</span>
-            </li>
-            <li>
-              <strong>Goal</strong>
-              <span>Grow toward future data analyst opportunities</span>
-            </li>
-            <li>
-              <strong>Based in</strong>
-              <span>Geeta Bhawan, Indore, Madhya Pradesh</span>
-            </li>
-          </ul>
-        </aside>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#home">Arpit Kushwaha</a>
+        <nav class="nav" aria-label="Primary navigation">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <button id="toggle-theme" class="theme-toggle" type="button" aria-label="Toggle theme">
+          Dark
+        </button>
       </div>
-    </section>
+    </header>
 
-    <section id="about" class="section">
-      <div class="container section-grid">
-        <div class="section-intro reveal">
-          <p class="eyebrow">About Me</p>
-          <h2>Strong fundamentals. Curious mindset. Steady growth.</h2>
-        </div>
-        <div class="section-card reveal">
-          <p>
-            I am a Computer Science student currently pursuing my degree with a strong interest in
-            Data Analytics and problem solving. My academic background includes Data Structures,
-            Database Management Systems, Probability, Statistics, and Linear Algebra, which help me
-            develop a solid analytical approach.
-          </p>
-          <p>
-            I enjoy working with data, identifying patterns, and solving logical problems. Along
-            with academics, I actively practice Python, SQL, and Data Structures to strengthen my
-            technical skills and apply them to practical scenarios.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="skills" class="section">
-      <div class="container">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Skills</p>
-          <h2>Core tools and strengths I am building with.</h2>
-        </div>
-        <div class="skills-grid">
-          <article class="skill-card reveal">
-            <h3>Programming</h3>
-            <p>Python for logic building, scripting, and data handling workflows.</p>
-          </article>
-          <article class="skill-card reveal">
-            <h3>Database</h3>
-            <p>SQL and MySQL for querying data, organizing tables, and extracting insights.</p>
-          </article>
-          <article class="skill-card reveal">
-            <h3>Data Analysis</h3>
-            <p>Pandas and NumPy for cleaning, exploring, and understanding datasets.</p>
-          </article>
-          <article class="skill-card reveal">
-            <h3>Problem Solving</h3>
-            <p>Data Structures practice, logical thinking, and step-by-step debugging.</p>
-          </article>
-        </div>
-
-        <div class="pill-row reveal">
-          <span>Python</span>
-          <span>SQL</span>
-          <span>MySQL</span>
-          <span>Pandas</span>
-          <span>NumPy</span>
-          <span>Data Structures</span>
-          <span>Statistics</span>
-          <span>Linear Algebra</span>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects" class="section">
-      <div class="container">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Projects</p>
-          <h2>Portfolio-ready analytics work and learning projects.</h2>
-          <p class="section-note">
-            These project blocks are written to fit your current profile and can be updated with
-            your exact project links later.
-          </p>
-        </div>
-
-        <div class="projects-grid">
-          <article class="project-card project-card-featured reveal">
-            <p class="project-type">Python Data Analysis</p>
-            <h3>Sales Data Analysis Dashboard</h3>
-            <p>
-              An analysis project focused on cleaning sales data, identifying revenue trends, and
-              presenting useful business insights through summary metrics and visual interpretation.
+    <main>
+      <section id="home" class="hero section-shell">
+        <div class="container hero-layout">
+          <div class="hero-copy reveal">
+            <p class="eyebrow">Computer Science Student | Building Toward Data Careers</p>
+            <h1>
+              Learning to turn
+              <span>logic, code, and data</span>
+              into meaningful work.
+            </h1>
+            <p class="hero-text">
+              I am Arpit Kushwaha, a Computer Science student focused on strengthening my
+              fundamentals in Python, SQL, data handling, and structured problem solving. I like
+              work that feels clear, analytical, and useful.
             </p>
-            <ul class="project-list">
-              <li>Cleaned and transformed raw data using Python libraries</li>
-              <li>Explored patterns in sales, categories, and performance trends</li>
-              <li>Summarized findings in a structured, readable format</li>
-            </ul>
-            <div class="pill-row compact">
+            <div class="hero-actions">
+              <a class="btn btn-primary magnetic" href="#projects">Explore Projects</a>
+              <a
+                class="btn btn-secondary magnetic"
+                href="https://www.linkedin.com/in/arpit-kushwaha-324479388"
+                target="_blank"
+                rel="noopener"
+              >
+                Connect on LinkedIn
+              </a>
+            </div>
+            <div class="hero-strip">
               <span>Python</span>
+              <span>SQL</span>
               <span>Pandas</span>
               <span>NumPy</span>
+              <span>Problem Solving</span>
             </div>
-          </article>
+          </div>
 
-          <article class="project-card reveal">
-            <p class="project-type">SQL Case Study</p>
-            <h3>Student Database Analysis</h3>
+          <aside class="hero-stack reveal">
+            <article class="floating-card hero-intro magnetic">
+              <p class="card-kicker">Current Position</p>
+              <h2>Student first. Builder every day.</h2>
+              <p>
+                I am focused on mastering the basics properly so future analytics and data work
+                rest on a strong technical foundation.
+              </p>
+            </article>
+
+            <div class="hero-side-grid">
+              <article class="floating-card stat-card magnetic">
+                <span class="stat-value">Core Base</span>
+                <p>DBMS, Data Structures, Probability, Statistics, Linear Algebra</p>
+              </article>
+              <article class="floating-card stat-card magnetic">
+                <span class="stat-value">Next Goal</span>
+                <p>Grow into internships and opportunities related to data and analysis</p>
+              </article>
+            </div>
+
+            <article class="floating-card location-card magnetic">
+              <p class="card-kicker">Based In</p>
+              <p>Geeta Bhawan, Indore, Madhya Pradesh, India</p>
+            </article>
+          </aside>
+        </div>
+      </section>
+
+      <section id="about" class="section-shell about-section">
+        <div class="container editorial-grid">
+          <div class="section-copy reveal">
+            <p class="eyebrow">About</p>
+            <h2>Strong fundamentals, curiosity for patterns, and a mindset built around steady improvement.</h2>
+          </div>
+          <div class="content-panel reveal magnetic">
             <p>
-              A structured SQL project using academic or student-related data to practice joins,
-              filtering, grouping, and extracting meaningful patterns from records.
+              I am currently pursuing Computer Science and have developed a strong interest in data,
+              analysis, and logical problem solving. My academic background includes Data
+              Structures, Database Management Systems, Probability, Statistics, and Linear Algebra.
             </p>
-            <div class="pill-row compact">
-              <span>SQL</span>
-              <span>MySQL</span>
-              <span>DBMS</span>
-            </div>
-          </article>
-
-          <article class="project-card reveal">
-            <p class="project-type">Problem Solving Practice</p>
-            <h3>Data Structures Practice Repository</h3>
             <p>
-              A collection of logic-building exercises and implementations that strengthen
-              analytical thinking, coding discipline, and technical confidence.
+              I enjoy understanding how data behaves, how systems are structured, and how code can
+              turn information into something practical. Alongside academics, I keep practicing
+              Python, SQL, and DSA to improve my thinking and implementation skills.
             </p>
-            <div class="pill-row compact">
-              <span>Python</span>
-              <span>DSA</span>
-              <span>Logic</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="section-shell">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow">Skills</p>
+            <h2>Tools, concepts, and strengths I am actively sharpening.</h2>
+          </div>
+
+          <div class="skills-layout">
+            <article class="skill-feature reveal magnetic">
+              <p class="card-kicker">Focus Areas</p>
+              <h3>Analytical skills built through both coursework and hands-on practice.</h3>
+              <div class="feature-tags">
+                <span>Python</span>
+                <span>SQL / MySQL</span>
+                <span>Pandas</span>
+                <span>NumPy</span>
+                <span>Data Structures</span>
+                <span>Statistics</span>
+                <span>Linear Algebra</span>
+                <span>Problem Solving</span>
+              </div>
+            </article>
+
+            <div class="skills-grid">
+              <article class="skill-card reveal magnetic">
+                <p class="card-kicker">Programming</p>
+                <h3>Python</h3>
+                <p>Using code to build logic, process data, and solve structured problems clearly.</p>
+              </article>
+              <article class="skill-card reveal magnetic">
+                <p class="card-kicker">Database</p>
+                <h3>SQL & MySQL</h3>
+                <p>Writing queries, filtering records, using joins, and understanding relational data.</p>
+              </article>
+              <article class="skill-card reveal magnetic">
+                <p class="card-kicker">Analysis</p>
+                <h3>Pandas & NumPy</h3>
+                <p>Cleaning data, exploring patterns, and working with structured datasets efficiently.</p>
+              </article>
+              <article class="skill-card reveal magnetic">
+                <p class="card-kicker">Mindset</p>
+                <h3>Logical Problem Solving</h3>
+                <p>Breaking difficult problems into smaller parts and improving solutions step by step.</p>
+              </article>
             </div>
-          </article>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section">
-      <div class="container journey-card reveal">
-        <p class="eyebrow">What I Bring</p>
-        <h2>A balanced mix of academic learning, technical practice, and analytical curiosity.</h2>
-        <p>
-          I am focused on improving every day and building a profile that is ready for internships,
-          learning opportunities, and real-world data work.
-        </p>
-      </div>
-    </section>
+      <section id="projects" class="section-shell projects-section">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow">Projects</p>
+            <h2>Work shaped around analysis, logic, and practical learning.</h2>
+          </div>
 
-    <section id="contact" class="section">
-      <div class="container contact-grid">
-        <div class="section-intro reveal">
-          <p class="eyebrow">Contact</p>
-          <h2>Let's connect and build something meaningful.</h2>
-          <p>
-            I am open to internships, collaborations, and opportunities where I can learn, grow,
-            and contribute through disciplined problem solving.
-          </p>
+          <div class="projects-grid">
+            <article class="project-card featured reveal magnetic">
+              <div class="project-topline">
+                <p class="card-kicker">Python Data Analysis</p>
+                <span>01</span>
+              </div>
+              <h3>Sales Data Analysis Dashboard</h3>
+              <p>
+                A project centered on cleaning raw sales data, identifying trends, and presenting
+                findings in a way that supports better decisions.
+              </p>
+              <ul class="project-list">
+                <li>Prepared and transformed raw records with Python tools</li>
+                <li>Tracked patterns in revenue, categories, and product behavior</li>
+                <li>Turned observations into clear summaries and usable insights</li>
+              </ul>
+              <div class="feature-tags compact">
+                <span>Python</span>
+                <span>Pandas</span>
+                <span>NumPy</span>
+              </div>
+            </article>
+
+            <article class="project-card reveal magnetic">
+              <div class="project-topline">
+                <p class="card-kicker">SQL Case Study</p>
+                <span>02</span>
+              </div>
+              <h3>Student Database Analysis</h3>
+              <p>
+                A SQL-focused practice project designed to improve confidence with joins,
+                aggregations, filtering, and extracting meaningful data patterns.
+              </p>
+              <div class="feature-tags compact">
+                <span>SQL</span>
+                <span>MySQL</span>
+                <span>DBMS</span>
+              </div>
+            </article>
+
+            <article class="project-card reveal magnetic">
+              <div class="project-topline">
+                <p class="card-kicker">Practice Repository</p>
+                <span>03</span>
+              </div>
+              <h3>Data Structures Practice</h3>
+              <p>
+                A collection of linked lists, stacks, and logic-building exercises that strengthen
+                coding discipline and analytical thinking.
+              </p>
+              <div class="feature-tags compact">
+                <span>Python</span>
+                <span>DSA</span>
+                <span>Logic</span>
+              </div>
+            </article>
+          </div>
         </div>
-        <div class="contact-card reveal">
-          <a href="mailto:jaykush3@gmail.com">jaykush3@gmail.com</a>
-          <a href="tel:+917049047924">+91 70490 47924</a>
-          <a href="https://github.com/jaykush3-lang" target="_blank" rel="noopener">
-            github.com/jaykush3-lang
-          </a>
-          <a href="https://www.linkedin.com/in/arpit-kushwaha-324479388" target="_blank" rel="noopener">
-            linkedin.com/in/arpit-kushwaha-324479388
-          </a>
-          <p>Geeta Bhawan, Indore, Madhya Pradesh, India</p>
-          <p class="contact-note">Available for internships, learning opportunities, and collaborations.</p>
-        </div>
-      </div>
-    </section>
-  </main>
+      </section>
 
-  <footer class="footer">
-    <div class="container footer-inner">
+      <section class="section-shell value-section">
+        <div class="container">
+          <div class="value-banner reveal magnetic">
+            <p class="eyebrow">Approach</p>
+            <h2>I am not trying to look experienced before earning it. I am trying to become genuinely capable.</h2>
+            <p>
+              That means building fundamentals carefully, learning continuously, and improving the
+              quality of both my thinking and my execution over time.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section-shell contact-section">
+        <div class="container contact-layout">
+          <div class="section-copy reveal">
+            <p class="eyebrow">Contact</p>
+            <h2>Open to internships, learning opportunities, and meaningful collaborations.</h2>
+            <p class="section-note">
+              If you are looking for someone with strong fundamentals, curiosity, and the discipline
+              to keep improving, I would be glad to connect.
+            </p>
+          </div>
+
+          <div class="contact-panel reveal magnetic">
+            <a href="mailto:jaykush3@gmail.com">jaykush3@gmail.com</a>
+            <a href="tel:+917049047924">+91 70490 47924</a>
+            <a href="https://github.com/jaykush3-lang" target="_blank" rel="noopener">github.com/jaykush3-lang</a>
+            <a href="https://www.linkedin.com/in/arpit-kushwaha-324479388" target="_blank" rel="noopener">
+              linkedin.com/in/arpit-kushwaha-324479388
+            </a>
+            <p>Geeta Bhawan, Indore, Madhya Pradesh, India</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
         <p>&copy; <span id="year"></span> Arpit Kushwaha. Computer Science Student.</p>
       </div>
-  </footer>
+    </footer>
+  </div>
 </body>
 </html>
