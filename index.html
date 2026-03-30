@@ -15,7 +15,17 @@
     rel="stylesheet"
   />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="cursor-design.css" />
+  
+  <!-- GSAP Animation Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollSmoother.min.js" defer></script>
+  
+  <!-- Custom Scripts -->
   <script defer src="script.js"></script>
+  <script defer src="gsap-animations.js"></script>
+  <script defer src="cursor-animation.js"></script>
 </head>
 <body>
   <div class="cursor-ring" aria-hidden="true"></div>
@@ -23,6 +33,10 @@
   <div class="cursor-aura" aria-hidden="true"></div>
 
   <div class="page-shell">
+    <!-- Background floating elements -->
+    <div class="bg-element one"></div>
+    <div class="bg-element two"></div>
+    
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand" href="#home">Arpit Kushwaha</a>
@@ -81,9 +95,35 @@
                 Clean structure, spacious presentation, and polished motion inspired by premium product websites.
               </p>
             </div>
+
+            <!-- Tech Stack Icons -->
+            <div class="icon-grid">
+              <div class="icon-item">
+                <span class="icon-item-icon">🐍</span>
+                <span class="icon-item-label">Python</span>
+              </div>
+              <div class="icon-item">
+                <span class="icon-item-icon">📊</span>
+                <span class="icon-item-label">Data</span>
+              </div>
+              <div class="icon-item">
+                <span class="icon-item-icon">💾</span>
+                <span class="icon-item-label">SQL</span>
+              </div>
+              <div class="icon-item">
+                <span class="icon-item-icon">⚙️</span>
+                <span class="icon-item-label">Backend</span>
+              </div>
+            </div>
           </div>
 
           <aside class="hero-stack reveal">
+            <!-- Profile Image -->
+            <div class="profile-image reveal">
+              <div class="profile-placeholder">
+                <span>👨‍💻</span>
+              </div>
+            </div>
             <div class="hero-orbit" aria-hidden="true">
               <span class="orbit orbit-one"></span>
               <span class="orbit orbit-two"></span>
@@ -135,6 +175,45 @@
           </div>
         </div>
       </section>
+
+      <!-- Visual Showcase Section -->
+      <section class="section-shell showcase-section">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow">Visual Gallery</p>
+            <h2>Work & Creations</h2>
+          </div>
+          
+          <div class="gallery-grid">
+            <article class="gallery-item reveal">
+              <div class="image-placeholder">📈</div>
+              <div class="gallery-overlay">Data Analysis</div>
+            </article>
+            <article class="gallery-item reveal">
+              <div class="image-placeholder">🎯</div>
+              <div class="gallery-overlay">Projects</div>
+            </article>
+            <article class="gallery-item reveal">
+              <div class="image-placeholder">💻</div>
+              <div class="gallery-overlay">Code</div>
+            </article>
+            <article class="gallery-item reveal">
+              <div class="image-placeholder">🔧</div>
+              <div class="gallery-overlay">Tools</div>
+            </article>
+            <article class="gallery-item reveal">
+              <div class="image-placeholder">📚</div>
+              <div class="gallery-overlay">Learning</div>
+            </article>
+            <article class="gallery-item reveal">
+              <div class="image-placeholder">🚀</div>
+              <div class="gallery-overlay">Innovation</div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
 
       <section class="section-shell finish-section">
         <div class="container finish-layout">
