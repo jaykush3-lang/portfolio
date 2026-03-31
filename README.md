@@ -65,7 +65,7 @@ https://your-github-username.github.io/repository-name/
 - Name: Arpit Kushwaha
 - Email: jaykush3@gmail.com
 - Phone: +91 70490 47924
-- LinkedIn: `linkedin.com/in/arpit-kushwaha-324479388`
+- LinkedIn: `linkedin.com/in/arpitkushwaha1`
 - GitHub: `github.com/jaykush3-lang`
 - Location: Geeta Bhawan, Indore, Madhya Pradesh, India
 

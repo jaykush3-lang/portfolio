@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const revealItems = document.querySelectorAll(".reveal");
   const navLinks = document.querySelectorAll(".nav a");
   const sections = ["about", "skills", "projects", "contact"];
+  const cursorRain = document.querySelector(".cursor-rain");
   const cursorRing = document.querySelector(".cursor-ring");
   const cursorCore = document.querySelector(".cursor-core");
   const cursorAura = document.querySelector(".cursor-aura");
@@ -88,6 +89,29 @@ document.addEventListener("DOMContentLoaded", () => {
     let ringY = pointerY;
     let auraX = pointerX;
     let auraY = pointerY;
+    const rainDrops = [];
+    let rainReady = false;
+
+    if (cursorRain) {
+      const totalDrops = 18;
+
+      for (let index = 0; index < totalDrops; index += 1) {
+        const drop = document.createElement("span");
+        drop.className = "rain-drop";
+        cursorRain.appendChild(drop);
+        rainDrops.push({
+          element: drop,
+          x: pointerX,
+          y: pointerY,
+          speedY: 0,
+          speedX: 0,
+          length: 14 + Math.random() * 20,
+          opacity: 0,
+        });
+      }
+
+      rainReady = rainDrops.length > 0;
+    }
 
     const animateCursor = () => {
       ringX += (pointerX - ringX) * 0.18;
@@ -108,6 +132,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (cursorAura) {
         cursorAura.style.transform = `translate(${auraX}px, ${auraY}px)`;
+      }
+
+      if (rainReady) {
+        rainDrops.forEach((drop, index) => {
+          const drift = (index % 2 === 0 ? -1 : 1) * (0.35 + index * 0.025);
+          const targetX = pointerX + drift * 12;
+          const targetY = pointerY - 10 - index * 4;
+
+          drop.speedX += (targetX - drop.x) * 0.02;
+          drop.speedY += (targetY - drop.y) * 0.028;
+          drop.speedX *= 0.84;
+          drop.speedY = drop.speedY * 0.8 + 1.3 + index * 0.045;
+
+          drop.x += drop.speedX;
+          drop.y += drop.speedY;
+          drop.opacity += (0.8 - drop.opacity) * 0.12;
+
+          if (drop.y > pointerY + 120) {
+            drop.x = pointerX + (Math.random() - 0.5) * 26;
+            drop.y = pointerY - 24 - Math.random() * 36;
+            drop.speedX = 0;
+            drop.speedY = 1 + Math.random() * 1.6;
+            drop.length = 14 + Math.random() * 20;
+            drop.opacity = 0.2 + Math.random() * 0.3;
+          }
+
+          drop.element.style.setProperty("--drop-x", `${drop.x}px`);
+          drop.element.style.setProperty("--drop-y", `${drop.y}px`);
+          drop.element.style.setProperty("--drop-length", `${drop.length}px`);
+          drop.element.style.setProperty("--drop-opacity", `${drop.opacity}`);
+        });
       }
 
       window.requestAnimationFrame(animateCursor);
