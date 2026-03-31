@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const revealItems = document.querySelectorAll(".reveal");
   const navLinks = document.querySelectorAll(".nav a");
   const sections = ["about", "skills", "projects", "contact"];
-  const cursorRain = document.querySelector(".cursor-rain");
+  const cursorTrail = document.querySelector(".cursor-trail");
   const cursorRing = document.querySelector(".cursor-ring");
   const cursorCore = document.querySelector(".cursor-core");
   const cursorAura = document.querySelector(".cursor-aura");
@@ -14,6 +14,56 @@ document.addEventListener("DOMContentLoaded", () => {
   const hoverPanels = document.querySelectorAll(
     ".floating-card, .content-panel, .skill-feature, .skill-card, .project-card, .value-banner, .contact-panel"
   );
+  const magneticTextTargets = document.querySelectorAll(
+    ".brand, .nav a, .btn, .hero-badge, .hero-strip span, .feature-tags span, .card-kicker, .eyebrow, .section-head h2, .section-copy h2, .skill-feature h3, .project-card h3, .hero-intro h2, .value-banner h2, .achievement-item h3"
+  );
+
+  const wrapWordsForMagnetism = (element) => {
+    if (!element || element.dataset.magneticTextReady === "true") {
+      return;
+    }
+
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        return node.nodeValue.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      },
+    });
+
+    const textNodes = [];
+
+    while (walker.nextNode()) {
+      textNodes.push(walker.currentNode);
+    }
+
+    textNodes.forEach((node) => {
+      const parts = node.nodeValue.split(/(\s+)/);
+      const fragment = document.createDocumentFragment();
+
+      parts.forEach((part) => {
+        if (!part) {
+          return;
+        }
+
+        if (/^\s+$/.test(part)) {
+          fragment.appendChild(document.createTextNode(part));
+          return;
+        }
+
+        const word = document.createElement("span");
+        word.className = "magnetic-word";
+        word.textContent = part;
+        fragment.appendChild(word);
+      });
+
+      node.parentNode.replaceChild(fragment, node);
+    });
+
+    element.classList.add("magnetic-text");
+    element.dataset.magneticTextReady = "true";
+  };
+
+  magneticTextTargets.forEach(wrapWordsForMagnetism);
+  const magneticWords = document.querySelectorAll(".magnetic-word");
 
   if (year) {
     year.textContent = new Date().getFullYear();
@@ -89,28 +139,27 @@ document.addEventListener("DOMContentLoaded", () => {
     let ringY = pointerY;
     let auraX = pointerX;
     let auraY = pointerY;
-    const rainDrops = [];
-    let rainReady = false;
+    const trailParticles = [];
+    let trailReady = false;
 
-    if (cursorRain) {
-      const totalDrops = 18;
+    if (cursorTrail) {
+      const totalParticles = 8;
 
-      for (let index = 0; index < totalDrops; index += 1) {
-        const drop = document.createElement("span");
-        drop.className = "rain-drop";
-        cursorRain.appendChild(drop);
-        rainDrops.push({
-          element: drop,
+      for (let index = 0; index < totalParticles; index += 1) {
+        const particle = document.createElement("span");
+        particle.className = "trail-particle";
+        cursorTrail.appendChild(particle);
+        trailParticles.push({
+          element: particle,
           x: pointerX,
           y: pointerY,
-          speedY: 0,
-          speedX: 0,
-          length: 14 + Math.random() * 20,
-          opacity: 0,
+          size: 10 + (totalParticles - index) * 2.4,
+          opacity: Math.max(0.12, 0.55 - index * 0.06),
+          delay: index * 0.075,
         });
       }
 
-      rainReady = rainDrops.length > 0;
+      trailReady = trailParticles.length > 0;
     }
 
     const animateCursor = () => {
@@ -134,36 +183,44 @@ document.addEventListener("DOMContentLoaded", () => {
         cursorAura.style.transform = `translate(${auraX}px, ${auraY}px)`;
       }
 
-      if (rainReady) {
-        rainDrops.forEach((drop, index) => {
-          const drift = (index % 2 === 0 ? -1 : 1) * (0.35 + index * 0.025);
-          const targetX = pointerX + drift * 12;
-          const targetY = pointerY - 10 - index * 4;
+      if (trailReady) {
+        trailParticles.forEach((particle, index) => {
+          const easing = 0.16 - particle.delay * 0.055;
+          particle.x += (pointerX - particle.x) * easing;
+          particle.y += (pointerY - particle.y) * easing;
 
-          drop.speedX += (targetX - drop.x) * 0.02;
-          drop.speedY += (targetY - drop.y) * 0.028;
-          drop.speedX *= 0.84;
-          drop.speedY = drop.speedY * 0.8 + 1.3 + index * 0.045;
+          const scale = 1 - index * 0.055;
 
-          drop.x += drop.speedX;
-          drop.y += drop.speedY;
-          drop.opacity += (0.8 - drop.opacity) * 0.12;
-
-          if (drop.y > pointerY + 120) {
-            drop.x = pointerX + (Math.random() - 0.5) * 26;
-            drop.y = pointerY - 24 - Math.random() * 36;
-            drop.speedX = 0;
-            drop.speedY = 1 + Math.random() * 1.6;
-            drop.length = 14 + Math.random() * 20;
-            drop.opacity = 0.2 + Math.random() * 0.3;
-          }
-
-          drop.element.style.setProperty("--drop-x", `${drop.x}px`);
-          drop.element.style.setProperty("--drop-y", `${drop.y}px`);
-          drop.element.style.setProperty("--drop-length", `${drop.length}px`);
-          drop.element.style.setProperty("--drop-opacity", `${drop.opacity}`);
+          particle.element.style.setProperty("--particle-x", `${particle.x}px`);
+          particle.element.style.setProperty("--particle-y", `${particle.y}px`);
+          particle.element.style.setProperty("--particle-size", `${particle.size}px`);
+          particle.element.style.setProperty("--particle-opacity", `${particle.opacity}`);
+          particle.element.style.setProperty("--particle-scale", `${scale}`);
         });
       }
+
+      magneticWords.forEach((word) => {
+        const rect = word.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const deltaX = pointerX - centerX;
+        const deltaY = pointerY - centerY;
+        const distance = Math.hypot(deltaX, deltaY);
+        const threshold = 110;
+
+        if (distance < threshold) {
+          const strength = (1 - distance / threshold) ** 1.8;
+          word.style.setProperty("--word-x", `${deltaX * 0.12 * strength}px`);
+          word.style.setProperty("--word-y", `${deltaY * 0.12 * strength}px`);
+          word.style.setProperty("--word-scale", `${1 + strength * 0.08}`);
+          word.classList.add("word-near");
+        } else {
+          word.style.setProperty("--word-x", "0px");
+          word.style.setProperty("--word-y", "0px");
+          word.style.setProperty("--word-scale", "1");
+          word.classList.remove("word-near");
+        }
+      });
 
       window.requestAnimationFrame(animateCursor);
     };
